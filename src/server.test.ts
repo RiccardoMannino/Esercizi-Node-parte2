@@ -35,7 +35,8 @@ describe("GET /planets", () => {
         const response = await request
             .get("/planets")
             .expect(200)
-            .expect("Content-Type", /application\/json/);
+            .expect("Content-Type", /application\/json/)
+            .expect("Access-ControlAllow-Origin", "http://localhost:8080");
 
         expect(response.body).toEqual(planets);
     });
@@ -107,7 +108,8 @@ describe("POST /planets", () => {
                 moons: 12,
             })
             .expect(201)
-            .expect("Content-Type", /application\/json/);
+            .expect("Content-Type", /application\/json/)
+            .expect("Access-ControlAllow-Origin", "http://localhost:8080");
 
         expect(response.body).toEqual(planet);
     });
@@ -156,7 +158,8 @@ describe("PUT /planets/:id", () => {
                 moons: 12,
             })
             .expect(200)
-            .expect("Content-Type", /application\/json/);
+            .expect("Content-Type", /application\/json/)
+            .expect("Access-ControlAllow-Origin", "http://localhost:8080");
 
         expect(response.body).toEqual(planet);
     });
@@ -219,7 +222,8 @@ describe("DELETE/planet/:id", () => {
         const response = await request
             .delete("/planets/1")
             .expect(204)
-            .expect("Content-Type", /application\/json/);
+            .expect("Content-Type", /application\/json/)
+            .expect("Access-ControlAllow-Origin", "http://localhost:8080");
 
         expect(response.text).toEqual("");
     });
